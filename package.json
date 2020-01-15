@@ -1,0 +1,23 @@
+{
+  "name": "react-code-share",
+  "version": "1.0.0",
+  "author": "Humancrafted",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "run:web": "yarn workspace web start",
+    "run:mobile": "yarn workspace mobile start",
+    "reset:modules": "rm -rf node_modules/ yarn.lock apps/*/node_modules",
+    "reset:yarn": "yarn cache clean",
+    "reset:rn": "watchman watch-del-all; rm -rf $TMPDIR/react-*; rm -rf $TMPDIR/haste-map-react-native-packager-*",
+    "reset:cache": "yarn reset:yarn && yarn reset:rn",
+    "reset": "yarn reset:modules && yarn reset:cache",
+    "start": "yarn run:web & yarn run:mobile"
+  }
+}
